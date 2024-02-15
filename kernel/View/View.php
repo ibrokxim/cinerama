@@ -2,8 +2,6 @@
 
 namespace App\Kernel\View;
 
-
-
 use App\Kernel\Exceptions\ViewNotFoundException;
 
 class View
