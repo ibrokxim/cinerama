@@ -13,13 +13,15 @@ class MovieController extends Controller
         $this->view('movies');
     }
 
-    public function add(): void
+    public function create(): void
     {
         $this->view('admin/movies/add');
     }
 
     public function store()
     {
+
+//        dd($this->db());
         $validation = $this->request()->validate([
            'name' => ['required', 'min:3', 'max:40'],
         ]);
@@ -27,9 +29,12 @@ class MovieController extends Controller
             foreach ($this->request()->errors() as $field => $errors) {
                 $this->session()->set($field, $errors);
             }
-
             $this->redirect('admin/movies/add');
-            // dd('Валидация провалена', $this->request()->errors());
         }
+        $id = $this->db()->insert('movies', [
+            'name' => $this->request()->input('name'),
+        ]);
+
+        dd('Movie added successfully');
     }
 }

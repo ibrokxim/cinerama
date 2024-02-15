@@ -10,11 +10,12 @@ class Validator implements ValidatorInterface
 
     public function validate(array $data, array $rules): bool
     {
-        $this->data = $data;
         $this->errors = [];
-        foreach ($rules as $key => $rule) {
-            $rules =$rule;
+        $this->data = $data;
 
+        foreach ($rules as $key => $rule) {
+            $rules = $rule;
+            $rules = is_array($rules) ? $rules : array($rules);
             foreach ($rules as $rule) {
                 // min:3
                 $rule = explode(':', $rule);
@@ -40,7 +41,7 @@ class Validator implements ValidatorInterface
 
     public function validateRule(string $key, string $ruleName, string $ruleValue = null): string|false
     {
-        $value = $this->data[$key] ?? null;
+        $value = $this->data[$key];
 
         switch ($ruleName) {
             case 'required':
