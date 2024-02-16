@@ -2,7 +2,7 @@
 
 return[
     'table' => 'users',
-    'username' => 'username',
+    'username' => 'email',
     'password' => 'password',
     'session_field' => 'user_id',
 
