@@ -18,7 +18,7 @@ class Route
 
     public static function post(string $uri, $action): static
     {
-        return new static($uri, method:'GET', action: $action);
+        return new static($uri, method:'POST', action: $action);
     }
 
     public function getUri()
