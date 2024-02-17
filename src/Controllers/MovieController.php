@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Kernel\Auth\AuthInterface;
 use App\Kernel\Controller\Controller;
 use App\Kernel\Http\Redirect;
 use App\Kernel\Validator\Validator;
@@ -40,6 +41,6 @@ class MovieController extends Controller
             'name' => $this->request()->input('name'),
         ]);
 
-        dd('Movie added successfully');
+
     }
 }
