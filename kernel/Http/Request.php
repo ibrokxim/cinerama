@@ -64,7 +64,7 @@ class Request implements RequestInterface
         foreach ($rules as $field => $rule) {
             $data[$field] = $this->input($field);
         }
-        // ['name' => []]
+
         return $this->validator->validate($data, $rules);
     }
 
