@@ -2,6 +2,7 @@
 /**
  * @var \App\Kernel\View\ViewInterface $view
  * @var array<\App\Models\Category> $categories
+ * @var array<\App\Models\Movie> $movies
  */
 ?>
 

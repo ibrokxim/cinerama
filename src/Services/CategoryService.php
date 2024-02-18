@@ -25,4 +25,45 @@ class CategoryService
 
         return $categories;
     }
+
+    public function delete(int $id): void
+    {
+        $this->db->delete('categories', [
+            'id' => $id,
+        ]);
+    }
+
+    public function store(string $name): int
+    {
+        return $this->db->insert('categories', [
+           'name' => $name,
+        ]);
+    }
+
+    public function find(int $id): ?Category
+    {
+        $category = $this->db->first('categories', [
+            'id' => $id
+        ]);
+
+        if (! $category) {
+            return null;
+        }
+
+        return new Category(
+            $category['id'],
+            $category['name'],
+            $category['created_at'],
+            $category['updated_at']
+        ) ;
+    }
+
+    public function update(int $id, string $name): void
+    {
+        $this->db->update('categories',[
+            'name' => $name
+        ], [
+            'id' => $id,
+        ]);
+    }
 }
